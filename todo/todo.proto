@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package todo;
+
+message Task{
+    required string text=1;
+    required bool done=2;
+}
+
+message Text {
+    required string text =1;
+}
+
+message TaskList {
+    repeated Task tasks =1;
+}
+
+message Void {}
+service Tasks {
+    rpc List(Void) returns(TaskList) {}
+    rpc Add(Text) returns(Task) {}
+}
